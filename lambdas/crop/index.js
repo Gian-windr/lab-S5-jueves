@@ -44,7 +44,7 @@ exports.handler = async (event) => {
                 Body: processedBuffer,
                 ContentType: "image/png"
             }));
-            console.log(`✅ Avatar procesado: ${newKey}`);
+            console.log(`Avatar procesado: ${newKey}`);
         }
     }
 };
