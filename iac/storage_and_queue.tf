@@ -1,6 +1,5 @@
-# ------------------------------------------------------------------------------
 # S3 BUCKET
-# ------------------------------------------------------------------------------
+
 resource "aws_s3_bucket" "image_bucket" {
   bucket = "image-processor-${terraform.workspace}-images-${random_id.suffix.hex}"
   tags   = { Name = "s3-image-processor-${terraform.workspace}" }
@@ -48,9 +47,8 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
   depends_on = [aws_sqs_queue_policy.default]
 }
 
-# ------------------------------------------------------------------------------
 # SQS & CLOUDWATCH
-# ------------------------------------------------------------------------------
+
 resource "aws_sqs_queue" "image_queue_dlq" {
   name                      = "image-processor-${terraform.workspace}-image-dlq"
   message_retention_seconds = 1209600 # 14 days

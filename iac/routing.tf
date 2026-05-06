@@ -1,6 +1,5 @@
-# ------------------------------------------------------------------------------
 # ROUTE TABLES & ASSOCIATIONS
-# ------------------------------------------------------------------------------
+
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
   route {
@@ -48,9 +47,8 @@ resource "aws_route_table_association" "private_b" {
   route_table_id = aws_route_table.private_b.id
 }
 
-# ------------------------------------------------------------------------------
 # VPC ENDPOINTS & SECURITY
-# ------------------------------------------------------------------------------
+
 resource "aws_security_group" "lambda" {
   name        = "sg-lambda-${var.project_name}-${terraform.workspace}"
   description = "Security group for Lambda functions"
