@@ -2,6 +2,8 @@
 
 Este proyecto implementa una arquitectura serverless para el procesamiento de imágenes en AWS. La infraestructura se gestiona con Terraform para garantizar despliegues consistentes en múltiples entornos.
 
+Alumno: Gianfranco Campos A. - ID: 274878
+
 ## Objetivo del Proyecto
 
 Desplegar una solución que permita a los usuarios subir imágenes, las cuales son procesadas automáticamente para generar una versión recortada en formato circular.
@@ -22,6 +24,14 @@ Antes de empezar, necesitas:
 *   AWS CLI (v2 o superior)
 *   Node.js y npm (v18 o superior)
 *   Credenciales de AWS configuradas localmente a través de 'aws configure'.
+
+## Instrucciones de Despliegue
+
+**Clonar el repositorio y entrar a la carpeta de infraestructura:**
+   ```bash
+   git clone https://github.com/Gian-windr/lab-S5-jueves.git
+   cd lab-S5-jueves/iac
+   ```
 
 ## Pasos para el Despliegue (Entorno 'dev')
 
