@@ -50,7 +50,7 @@ resource "aws_route_table_association" "private_b" {
 # VPC ENDPOINTS & SECURITY
 
 resource "aws_security_group" "lambda" {
-  name        = "sg-lambda-${var.project_name}-${terraform.workspace}"
+    name        = "lambda-${var.project_name}-${terraform.workspace}"
   description = "Security group for Lambda functions"
   vpc_id      = aws_vpc.main.id
   egress {
