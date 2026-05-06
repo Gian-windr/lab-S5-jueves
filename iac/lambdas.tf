@@ -3,7 +3,7 @@
 data "archive_file" "upload_lambda_zip" {
   type        = "zip"
   source_dir  = "${path.root}/../lambdas/upload"
-  output_path = "${path.root}/../dist/upload_lambda.zip"
+  output_path = "${path.module}/upload.zip"
 }
 
 resource "aws_lambda_function" "upload_lambda" {
@@ -21,7 +21,7 @@ resource "aws_lambda_function" "upload_lambda" {
   }
   environment {
     variables = {
-      S3_BUCKET     = aws_s3_bucket.image_bucket.bucket
+      S3_BUCKET = aws_s3_bucket.image_bucket.bucket
       UPLOAD_PREFIX = "uploads/"
     }
   }
@@ -31,7 +31,7 @@ resource "aws_lambda_function" "upload_lambda" {
 data "archive_file" "crop_lambda_zip" {
   type        = "zip"
   source_dir  = "${path.root}/../lambdas/crop"
-  output_path = "${path.root}/../dist/crop_lambda.zip"
+  output_path = "${path.module}/crop.zip"
 }
 
 resource "aws_lambda_function" "crop_lambda" {

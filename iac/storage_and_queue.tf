@@ -1,7 +1,8 @@
 # S3 BUCKET
 
 resource "aws_s3_bucket" "image_bucket" {
-  bucket = "image-processor-${terraform.workspace}-images-${random_id.suffix.hex}"
+  bucket        = "image-processor-${terraform.workspace}-images-${random_id.suffix.hex}"
+  force_destroy = true
   tags   = { Name = "s3-image-processor-${terraform.workspace}" }
 }
 
@@ -26,13 +27,17 @@ resource "aws_s3_bucket_lifecycle_configuration" "image_bucket_lifecycle" {
   rule {
     id     = "expire-uploads"
     status = "Enabled"
-    prefix = "uploads/"
+    filter {
+      prefix = "uploads/"
+    }
     expiration { days = 30 }
   }
   rule {
     id     = "expire-processed"
     status = "Enabled"
-    prefix = "processed/"
+    filter {
+      prefix = "processed/"
+    }
     expiration { days = 90 }
   }
 }
